@@ -77,6 +77,100 @@ def index_words(text):
 
     return my_dict
 
+def word_frequency_file(filename):
+    file = open(filename, "r")
+    text = file.read()
+    file.close()
+
+    words = text.split()
+    my_dict = {}
+
+    for word in words:
+        if word in my_dict:
+            my_dict[word] += 1
+        else:
+            my_dict[word] = 1
+    return my_dict
+
+def char_frequency_file(filename):
+    file = open(filename, "r")
+    text = file.read()
+    file.close()
+
+    words = text.split()
+    my_dict = {}
+
+    for word in words:
+        word = word.lower().strip()
+        for letters in word:
+            if letters in my_dict:
+                my_dict[letters] += 1
+            else:
+                my_dict[letters] = 1
+    return my_dict
+
+def wordIndex(filename):
+    file = open(filename, "r")
+    text = file.read()
+    file.close()
+
+    words = text.split()
+
+    my_dic = {}
+
+    for index, word in enumerate(words):
+        if word not in my_dic:
+            my_dic[word] = [index]
+        else:
+            my_dic[word].append(index)
+    return my_dic
+
+def double_numbers(input_file, output_file):
+    infile = open(input_file, "r")
+    outfile = open(output_file, 'w')
+
+    for line in infile:
+        line = line.strip()
+        if line: #This will only skip lines that are truly empty and have no numbers on that line, if not it will evaluate the line
+            num = int(line)
+            doubled = num * 2
+            outfile.write(str(doubled) + "\n")
+    infile.close
+    outfile.close
+
+def append_even_numbers(filename):
+    input_file = open(filename, "r")
+    text = input_file.readlines()
+    input_file.close()
+    input_file = open(filename, "a")
+
+    for line in text:
+        line = line.strip()
+        if line:
+            number = int(line)
+            if number % 2 == 1:
+                input_file.write(str(number) + "\n")
+    input_file.close()
+append_even_numbers("numbers.txt")
+
+def replace_and_write(input, output, old, new):
+    input_file = open(input, "r")
+    content = input_file.read()
+    input_file.close()
+    output_file = open(output, "w")
+
+    if old in content:
+        new_word = content.replace(old, new)
+        output_file.write(new_word)
+    output_file.close()
+replace_and_write("sample_text.txt", "rewritten.txt", "a", "BIG poo")
+
+            
+
+
+
+
+
 
     
 
